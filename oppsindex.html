@@ -1,0 +1,1304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#10100f" />
+<meta name="description" content="OPPS Basketball — a Bay Area youth basketball program built around opportunity, belonging, development and competition." />
+<title>OPPS Basketball | Turn Opposition Into Opportunity</title>
+
+<style>
+  :root {
+    --ink: #111210;
+    --paper: #f5f1e8;
+    --white: #fffdf8;
+    --orange: #fa5934;
+    --muted: #69665e;
+    --rule: #d5cfc4;
+    --green: #d7f17b;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button, input, select, textarea {
+    font: inherit;
+  }
+
+  button, a, input, select, textarea {
+    outline-offset: 4px;
+  }
+
+  ::selection {
+    background: var(--orange);
+    color: white;
+  }
+
+  .wrap {
+    width: min(1180px, 90%);
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-size: .76rem;
+    letter-spacing: .19em;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .section { padding: 105px 0; }
+
+  .section-title {
+    font-size: clamp(2.8rem, 6vw, 5.7rem);
+    line-height: .98;
+    letter-spacing: -.075em;
+    max-width: 900px;
+    margin: 12px 0 22px;
+  }
+
+  .lead {
+    font-size: 1.15rem;
+    color: #514e48;
+    max-width: 680px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 49px;
+    padding: 12px 22px;
+    border-radius: 2px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .065em;
+    font-size: .78rem;
+    transition: transform .2s, background .2s;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn-orange {
+    background: var(--orange);
+    color: var(--ink);
+  }
+
+  .btn-outline {
+    border-color: currentColor;
+    background: transparent;
+    color: inherit;
+  }
+
+  .actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* NAVIGATION */
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .wordmark {
+    font-size: 2rem;
+    letter-spacing: -.1em;
+    line-height: 1;
+    font-weight: 1000;
+  }
+
+  .wordmark span { color: var(--orange); }
+
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: .7rem;
+    letter-spacing: .1em;
+  }
+
+  .nav-links a:hover { color: #c43b20; }
+
+  .nav-menu {
+    display: none;
+    border: 1px solid var(--rule);
+    background: transparent;
+    padding: 10px 13px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  /* HERO */
+
+  .hero {
+    background: var(--ink);
+    color: var(--white);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-inner {
+    min-height: 700px;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    align-items: center;
+    gap: 3rem;
+    padding: 95px 0;
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero h1 {
+    font-size: clamp(6rem, 17vw, 14.5rem);
+    letter-spacing: -.11em;
+    line-height: .72;
+    margin: 28px 0 32px;
+    font-weight: 1000;
+  }
+
+  .hero h1 span { color: var(--orange); }
+
+  .hero-statement {
+    font-size: clamp(1.45rem, 2.7vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -.045em;
+    line-height: 1.13;
+    max-width: 560px;
+    margin-bottom: 21px;
+  }
+
+  .hero-copy > p:last-of-type {
+    color: #bebcb5;
+    max-width: 475px;
+    margin-bottom: 30px;
+  }
+
+  .hero .eyebrow { color: var(--green); }
+
+  /* BASKETBALL ART */
+
+  .hero-art {
+    height: 480px;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .hero-art:before {
+    content: "";
+    position: absolute;
+    width: min(100%, 460px);
+    aspect-ratio: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-18deg);
+    border: 40px solid var(--orange);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(255,255,255,.15);
+  }
+
+  .hero-ball {
+    position: absolute;
+    inset: 8%;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,.18);
+    background: radial-gradient(
+      circle at 32% 25%,
+      #ffb16c,
+      #ef572c 45%,
+      #a8301a 85%
+    );
+    overflow: hidden;
+    transform: rotate(-17deg);
+    box-shadow: 30px 40px 80px #0008;
+  }
+
+  .hero-ball:before {
+    content: "";
+    position: absolute;
+    top: -15%;
+    left: 49%;
+    width: 2px;
+    height: 130%;
+    background: #25180e;
+    box-shadow: 2px 0 1px #f6c6a44d;
+  }
+
+  .hero-ball:after {
+    content: "";
+    position: absolute;
+    inset: -20% 22%;
+    border: 4px solid #361c12;
+    border-radius: 50%;
+    transform: rotate(48deg);
+  }
+
+  .ball-text {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    z-index: 2;
+    font-size: clamp(4rem, 8vw, 7rem);
+    font-weight: 1000;
+    letter-spacing: -.12em;
+    text-shadow: 4px 5px 0 #15130f;
+    color: var(--white);
+    transform: rotate(-6deg);
+  }
+
+  .hero-corner {
+    position: absolute;
+    right: -36px;
+    top: 3px;
+    writing-mode: vertical-rl;
+    letter-spacing: .2em;
+    font-weight: 800;
+    font-size: .75rem;
+    color: #aaa;
+  }
+
+  /* TICKER */
+
+  .ticker {
+    background: var(--orange);
+    padding: 17px 0;
+    color: var(--ink);
+    overflow: hidden;
+  }
+
+  .ticker-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-size: .83rem;
+  }
+
+  /* OUR STORY */
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: clamp(30px, 8vw, 140px);
+  }
+
+  .big-quote {
+    font-size: clamp(2.4rem, 4vw, 4.6rem);
+    font-weight: 900;
+    line-height: 1.03;
+    letter-spacing: -.07em;
+    margin: 16px 0;
+  }
+
+  .accent { color: #df492c; }
+
+  .story-body p {
+    font-size: 1.13rem;
+    margin: 0 0 23px;
+    color: #47443f;
+  }
+
+  .story-body strong { color: var(--ink); }
+
+  .story-note {
+    border-left: 4px solid var(--orange);
+    padding-left: 22px;
+    margin-top: 26px;
+    font-weight: 800;
+    font-size: 1.3rem;
+    line-height: 1.3;
+  }
+
+  /* VALUES */
+
+  .dark {
+    background: #191b18;
+    color: var(--white);
+  }
+
+  .dark .lead { color: #c6c9c0; }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #4b4e46;
+    border: 1px solid #4b4e46;
+    margin-top: 42px;
+  }
+
+  .pillar {
+    background: #191b18;
+    padding: 36px 30px;
+    min-height: 245px;
+  }
+
+  .pillar .num {
+    color: var(--orange);
+    font-size: .79rem;
+    letter-spacing: .1em;
+    font-weight: 900;
+  }
+
+  .pillar h3 {
+    font-size: 1.9rem;
+    letter-spacing: -.055em;
+    margin: 24px 0 12px;
+  }
+
+  .pillar p {
+    font-size: .97rem;
+    color: #b7b9b3;
+    max-width: 290px;
+  }
+
+  /* PROGRAMS */
+
+  .programs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 17px;
+    margin-top: 42px;
+  }
+
+  .program {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 34px 28px;
+    min-height: 290px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .program b {
+    font-size: .75rem;
+    letter-spacing: .15em;
+    color: #b94d30;
+  }
+
+  .program h3 {
+    font-size: 2rem;
+    letter-spacing: -.07em;
+    margin: 24px 0 14px;
+  }
+
+  .program p {
+    color: #58554e;
+    font-size: 1rem;
+  }
+
+  .program small {
+    margin-top: auto;
+    border-top: 1px solid var(--rule);
+    padding-top: 17px;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    font-weight: 800;
+    font-size: .73rem;
+  }
+
+  /* MANIFESTO */
+
+  .manifesto {
+    background: var(--orange);
+    padding: 100px 0;
+  }
+
+  .manifesto h2 {
+    font-size: clamp(3.3rem, 8vw, 8.7rem);
+    line-height: .88;
+    letter-spacing: -.09em;
+    max-width: 1050px;
+    margin: 15px 0 30px;
+  }
+
+  .manifesto p {
+    font-size: 1.18rem;
+    max-width: 700px;
+    font-weight: 650;
+  }
+
+  /* GET INVOLVED */
+
+  .steps {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .step {
+    border-top: 3px solid var(--ink);
+    padding-top: 20px;
+  }
+
+  .step b { font-size: .82rem; }
+
+  .step h3 {
+    font-size: 1.55rem;
+    letter-spacing: -.04em;
+  }
+
+  .step p { color: #514e48; }
+
+  /* CONTACT */
+
+  .contact {
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 70px;
+  }
+
+  .contact p {
+    color: #c2c1b9;
+    max-width: 570px;
+  }
+
+  .contact-card {
+    border: 1px solid #454840;
+    padding: 30px;
+    background: #1e211b;
+  }
+
+  .contact-card h3 {
+    font-size: 1.7rem;
+    margin: 0 0 12px;
+  }
+
+  .contact-card label {
+    display: block;
+    font-size: .74rem;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-top: 18px;
+    margin-bottom: 7px;
+  }
+
+  .contact-card input,
+  .contact-card select,
+  .contact-card textarea {
+    width: 100%;
+    border: 1px solid #687067;
+    color: white;
+    background: #12140f;
+    padding: 12px;
+    border-radius: 0;
+  }
+
+  .contact-card textarea {
+    resize: vertical;
+    min-height: 90px;
+  }
+
+  .contact-card .btn {
+    margin-top: 22px;
+    width: 100%;
+  }
+
+  .contact-card small {
+    display: block;
+    color: #aeb1a7;
+    margin-top: 12px;
+    font-size: .75rem;
+  }
+
+  /* FOOTER */
+
+  footer {
+    background: #0a0b09;
+    color: #acafa5;
+    padding: 27px 0;
+  }
+
+  .footer-flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: .8rem;
+  }
+
+  footer a { color: var(--white); }
+
+  /* TABLET */
+
+  @media (max-width: 920px) {
+    .nav-menu { display: block; }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 75px;
+      left: 0;
+      right: 0;
+      background: var(--paper);
+      padding: 22px 5%;
+      flex-direction: column;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--rule);
+      gap: 21px;
+    }
+
+    .nav-links.open { display: flex; }
+
+    .hero-inner {
+      grid-template-columns: 1fr;
+      padding: 80px 0 40px;
+      min-height: initial;
+      gap: 0;
+    }
+
+    .hero-art {
+      height: 370px;
+      max-width: 430px;
+      width: 100%;
+      margin: 10px auto 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(7rem, 21vw, 11rem);
+    }
+
+    .story-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 35px;
+    }
+
+    .pillars,
+    .programs,
+    .steps {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* MOBILE */
+
+  @media (max-width: 620px) {
+    .section,
+    .manifesto {
+      padding: 70px 0;
+    }
+
+    .hero-art { height: 310px; }
+
+    .hero h1 {
+      font-size: clamp(5.8rem, 25vw, 9rem);
+    }
+
+    .hero-inner { padding-top: 60px; }
+
+    .pillars,
+    .programs,
+    .steps {
+      grid-template-columns: 1fr;
+    }
+
+    .pillar,
+    .program {
+      min-height: unset;
+    }
+
+    .hero-corner { right: 0; }
+
+    .ticker-inner {
+      font-size: .7rem;
+      gap: 11px;
+    }
+
+    .contact-card { padding: 23px; }
+
+    .section-title {
+      font-size: clamp(2.8rem, 12vw, 4.5rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header>
+  <div class="wrap nav">
+
+    <a class="wordmark" href="#home"
+       aria-label="OPPS Basketball home">
+      OPPS<span>.</span>
+    </a>
+
+    <button class="nav-menu"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav-links">
+      MENU ☰
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#meaning">Our story</a></li>
+      <li><a href="#values">Our values</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#join">Join the movement</a></li>
+    </ul>
+
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div class="wrap hero-inner">
+
+    <div class="hero-copy">
+
+      <div class="eyebrow">
+        East Bay Basketball / Building toward 2027
+      </div>
+
+      <h1>OPPS<span>.</span></h1>
+
+      <div class="hero-statement">
+        THE NAME SOUNDS LIKE OPPOSITION.<br>
+        THE MISSION IS
+        <span style="color:var(--orange)">
+          OPPORTUNITY.
+        </span>
+      </div>
+
+      <p>
+        Competitive youth basketball built for the
+        overlooked, the underestimated, and everyone
+        ready to put in the work.
+
+        We compete hard. We make room to grow.
+        We rise together.
+      </p>
+
+      <div class="actions">
+
+        <a class="btn btn-orange" href="#join">
+          Get involved ↗
+        </a>
+
+        <a class="btn btn-outline" href="#meaning">
+          The story behind OPPS
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- CSS BASKETBALL GRAPHIC -->
+
+    <div class="hero-art" aria-hidden="true">
+
+      <div class="hero-ball"></div>
+
+      <div class="ball-text">
+        OPPS.
+      </div>
+
+      <span class="hero-corner">
+        OPPORTUNITY OVER EVERYTHING
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- BRAND MESSAGE -->
+
+<div class="ticker">
+
+  <div class="wrap ticker-inner">
+
+    <span>OPPORTUNITY OVER EVERYTHING</span>
+
+    <span>BUILT TO COMPETE</span>
+
+    <span>EVERY PLAYER HAS A STORY</span>
+
+  </div>
+
+</div>
+
+
+<!-- OUR STORY -->
+
+<section class="section" id="meaning">
+
+  <div class="wrap story-grid">
+
+    <div>
+
+      <div class="eyebrow">
+        What does OPPS mean?
+      </div>
+
+      <h2 class="big-quote">
+        TURN
+        <span class="accent">OPPS</span>
+        INTO OPPORTUNITIES.
+      </h2>
+
+    </div>
+
+    <div class="story-body">
+
+      <p>
+        In everyday language, an
+        <strong>“opp”</strong>
+        can mean an opponent, rival, or enemy.
+
+        We took that familiar word and gave it
+        a different purpose.
+      </p>
+
+      <p>
+        At <strong>OPPS Basketball</strong>,
+        the name stands for
+        <strong>opportunities</strong>—to be seen,
+        to belong, to develop, to compete, and
+        to build a future through sport.
+      </p>
+
+      <p>
+        We believe athletes are more than rankings,
+        reputations, or the circumstances they come from.
+
+        Talent deserves development.
+        Effort deserves a chance.
+
+        And competition should challenge players
+        without closing doors on their potential.
+      </p>
+
+      <div class="story-note">
+        Opponents on the court.<br>
+        Opportunity for everyone.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- VALUES -->
+
+<section class="section dark" id="values">
+
+  <div class="wrap">
+
+    <div class="eyebrow" style="color:var(--orange)">
+      The OPPS standard
+    </div>
+
+    <h2 class="section-title">
+      MORE THAN A TEAM.<br>
+      A DIFFERENT KIND OF CULTURE.
+    </h2>
+
+    <p class="lead">
+      A competitive program can demand excellence
+      and still create a place where athletes feel
+      valued, supported and connected.
+    </p>
+
+    <div class="pillars">
+
+      <article class="pillar">
+
+        <span class="num">01 / ACCESS</span>
+
+        <h3>Opportunity</h3>
+
+        <p>
+          Creating meaningful pathways into training,
+          competition and personal growth.
+        </p>
+
+      </article>
+
+      <article class="pillar">
+
+        <span class="num">02 / WORK</span>
+
+        <h3>Development</h3>
+
+        <p>
+          Fundamentals, decision-making,
+          accountability and confidence built
+          through purposeful practice.
+        </p>
+
+      </article>
+
+      <article class="pillar">
+
+        <span class="num">03 / PEOPLE</span>
+
+        <h3>Belonging</h3>
+
+        <p>
+          A team culture rooted in respect,
+          community, resilience and second chances.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PROGRAMS -->
+
+<section class="section" id="programs">
+
+  <div class="wrap">
+
+    <div class="eyebrow">
+      Where we're headed
+    </div>
+
+    <h2 class="section-title">
+      ONE MISSION.<br>
+      MORE WAYS TO PLAY.
+    </h2>
+
+    <p class="lead">
+      OPPS is being developed as an East Bay
+      youth basketball program.
+
+      Our initial focus is building a strong foundation
+      before growing into additional teams and opportunities.
+    </p>
+
+    <div class="programs">
+
+      <article class="program">
+
+        <b>01 / COMPETITION</b>
+
+        <h3>AAU &amp; club teams</h3>
+
+        <p>
+          Age-appropriate competitive teams emphasizing
+          fundamentals, teamwork, and player development.
+        </p>
+
+        <small>
+          Target launch: 2027 · Details to come
+        </small>
+
+      </article>
+
+      <article class="program">
+
+        <b>02 / TRAINING</b>
+
+        <h3>Skills &amp; development</h3>
+
+        <p>
+          Training sessions focused on footwork,
+          ball handling, shooting, reads,
+          movement and game situations.
+        </p>
+
+        <small>
+          Interest list forming
+        </small>
+
+      </article>
+
+      <article class="program">
+
+        <b>03 / COMMUNITY</b>
+
+        <h3>Camps &amp; events</h3>
+
+        <p>
+          Future clinics, community events
+          and opportunities for more athletes
+          to experience basketball.
+        </p>
+
+        <small>
+          Future programming
+        </small>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MANIFESTO -->
+
+<section class="manifesto">
+
+  <div class="wrap">
+
+    <div class="eyebrow">
+      Our mindset
+    </div>
+
+    <h2>
+      DON'T COUNT<br>
+      US OUT.
+    </h2>
+
+    <p>
+      Being overlooked isn't the end of the story.
+
+      What matters is what you do with the
+      opportunity in front of you.
+
+      We want athletes to develop the skills,
+      confidence and character to write
+      their own next chapter.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- GET INVOLVED -->
+
+<section class="section" id="pathway">
+
+  <div class="wrap">
+
+    <div class="eyebrow">
+      Get involved
+    </div>
+
+    <h2 class="section-title">
+      THE NEXT OPPORTUNITY STARTS HERE.
+    </h2>
+
+    <div class="steps">
+
+      <div class="step">
+
+        <b>01</b>
+
+        <h3>Express interest</h3>
+
+        <p>
+          Tell us the athlete's age, experience
+          and what kind of basketball opportunity
+          you're looking for.
+        </p>
+
+      </div>
+
+      <div class="step">
+
+        <b>02</b>
+
+        <h3>Stay connected</h3>
+
+        <p>
+          We will share information about planned workouts,
+          age divisions and future program availability
+          once confirmed.
+        </p>
+
+      </div>
+
+      <div class="step">
+
+        <b>03</b>
+
+        <h3>Show up ready</h3>
+
+        <p>
+          Bring a willingness to learn, compete,
+          support teammates and represent
+          the OPPS mindset.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="section contact" id="join">
+
+  <div class="wrap contact-grid">
+
+    <div>
+
+      <div class="eyebrow" style="color:var(--orange)">
+        Join the movement
+      </div>
+
+      <h2 class="section-title">
+        YOUR STORY.<br>
+        YOUR SHOT.
+      </h2>
+
+      <p>
+        Interested in joining a future OPPS team,
+        helping coach, collaborating, or
+        supporting the program?
+
+        Send an inquiry to start the conversation.
+      </p>
+
+      <p style="font-size:.86rem">
+        OPPS Basketball is a developing program.
+
+        Team placement, schedules, fees, facilities
+        and affiliations will be announced
+        when confirmed.
+      </p>
+
+    </div>
+
+    <div class="contact-card">
+
+      <h3>Send an interest inquiry</h3>
+
+      <form id="interest-form">
+
+        <label for="role">
+          I'm interested as a
+        </label>
+
+        <select id="role" required>
+          <option value="Parent / guardian">
+            Parent / guardian
+          </option>
+          <option value="Player">
+            Player
+          </option>
+          <option value="Coach / volunteer">
+            Coach / volunteer
+          </option>
+          <option value="Community partner">
+            Community partner
+          </option>
+        </select>
+
+        <label for="person">
+          Your name
+        </label>
+
+        <input
+          id="person"
+          autocomplete="name"
+          placeholder="Full name"
+          required
+          maxlength="100">
+
+        <label for="reply">
+          Your email
+        </label>
+
+        <input
+          id="reply"
+          type="email"
+          autocomplete="email"
+          placeholder="you@example.com"
+          required>
+
+        <label for="note">
+          Tell us a little more
+        </label>
+
+        <textarea
+          id="note"
+          placeholder="Player age/grade, experience or how you'd like to get involved"
+          maxlength="1000"></textarea>
+
+        <button
+          class="btn btn-orange"
+          type="submit">
+          Compose inquiry ↗
+        </button>
+
+        <small>
+          This demo opens your email application;
+          it does not submit information to a server.
+
+          Replace the placeholder destination email
+          in the JavaScript before publishing.
+        </small>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="wrap footer-flex">
+
+    <span>
+      © <span id="year">2026</span>
+      OPPS Basketball · East Bay, California
+    </span>
+
+    <span>
+      Opportunity over everything.
+    </span>
+
+    <a href="#home">
+      Back to top ↑
+    </a>
+
+  </div>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+  const menu = document.querySelector('.nav-menu');
+  const links = document.querySelector('.nav-links');
+
+  menu.addEventListener('click', () => {
+    const expanded = links.classList.toggle('open');
+
+    menu.setAttribute(
+      'aria-expanded',
+      String(expanded)
+    );
+  });
+
+  links.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+
+      menu.setAttribute('aria-expanded', 'false');
+    })
+  );
+
+  document.getElementById('year').textContent =
+    new Date().getFullYear();
+
+  document.getElementById('interest-form')
+    .addEventListener('submit', event => {
+
+      event.preventDefault();
+
+      // CHANGE THIS TO YOUR BUSINESS EMAIL
+      const destination = 'YOUR_EMAIL@example.com';
+
+      const role =
+        document.getElementById('role').value;
+
+      const name =
+        document.getElementById('person').value.trim();
+
+      const email =
+        document.getElementById('reply').value.trim();
+
+      const note =
+        document.getElementById('note').value.trim();
+
+      const subject = encodeURIComponent(
+        'OPPS Basketball interest — ' + role
+      );
+
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nInterested as: ${role}\n\nMessage:\n${note}`
+      );
+
+      window.location.href =
+        `mailto:${destination}?subject=${subject}&body=${body}`;
+
+    });
+
+</script>
+
+</body>
+</html>
